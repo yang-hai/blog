@@ -1,0 +1,39 @@
+{% extends 'user-base.html' %}
+
+{% block css %}
+<link href="/static/css/base.css" rel="stylesheet">
+<link href="/static/css/index.css" rel="stylesheet">
+<link href="/static/css/m.css" rel="stylesheet">
+{% endblock %}
+
+{% block js1 %}
+<script src="/static/js/jquery.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="/static/js/comm.js"></script>
+<!--[if lt IE 9]>
+<script src="/static/js/modernizr.js"></script>
+<![endif]-->
+{% endblock %}
+
+{% block header %}
+<header class="header-navigation" id="header">
+  <nav><div class="logo"><a href="/user/index/">杨海个人博客</a></div>
+    <h2 id="mnavh"><span class="navicon"></span></h2>
+    <ul id="starlist">
+      <li>欢迎：{{ user.username }}</li>
+      <li><a href="/user/logout/">退出</a></li>
+      <li><a href="/user/index/">网站首页</a></li>
+      <li><a href="/user/article_list/">我的文章</a></li>
+      <li><a href="/user/info/0/">内容页</a></li>
+    </ul>
+</nav>
+</header>
+{% endblock %}
+
+{% block footer %}
+<footer>
+  <p>Design by <a href="/user/index/">杨海个人博客</a> </p>
+</footer>
+<a href="#" class="cd-top">Top</a>
+{% endblock %}
+
+

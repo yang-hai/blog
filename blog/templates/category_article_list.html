@@ -1,0 +1,28 @@
+{% extends 'user-base-main.html' %}
+{% block title %}
+我的文章
+{% endblock %}
+
+{% block content %}
+<article>
+<aside class="l_box">
+      <div class="fenlei">
+        <h2>文章分类</h2>
+        <ul>
+          {% for cgy in cgys %}
+          <li><a href="/">{{ cgy.c_name }}（{{ cgy.nums }}）</a></li>
+          {% endfor %}
+        </ul>
+      </div>
+  </aside>
+
+  <main class="r_box">
+    {% for art in arts %}
+    <li><i><a href="{% url 'user:info' art.id %}"><img src="/media/{{ art.image }}"></a></i>
+      <h3><a href="{% url 'user:info' art.id %}">{{ art.title }}</a></h3>
+      <p>{{ art.contents | safe }}</p>
+    </li>
+    {% endfor %}
+  </main>
+  </article>
+{% endblock %}

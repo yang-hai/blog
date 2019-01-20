@@ -1,0 +1,37 @@
+{% extends 'user-base-main.html' %}
+
+{% block title %}
+内容页
+{% endblock %}
+{% block css %}
+{{ block.super }}
+<link href="/static/css/info.css" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+  <main>
+    <div class="infosbox">
+      <div class="newsview">
+        <h3 class="news_title">{{ art.title }}</h3>
+        <div class="bloginfo">
+          <ul>
+            <li class="author">作者：<a href="/">杨海</a></li>
+            <li class="lmname">分类名：<a href="/">{% if f_c_name %}{{ f_c_name }}{% endif %}</a></li>
+            <li class="timer">发布时间：{{ art.create_time | date:"Y-m-d H:i:s" }}</li>
+          </ul>
+        </div>
+        <div class="tags"></div>
+          <br>
+          {{ art.contents | safe }}
+          &nbsp; </div>
+      </div>
+      <!--<div class="share">-->
+        <!--<p class="diggit"><a href="JavaScript:makeRequest('/e/public/digg/?classid=3&amp;id=19&amp;dotop=1&amp;doajax=1&amp;ajaxarea=diggnum','EchoReturnedText','GET','');"> 很赞哦！ </a>(<b id="diggnum"><script type="text/javascript" src="/e/public/ViewClick/?classid=2&id=20&down=5"></script>13</b>)</p>-->
+      <!--</div>-->
+      <div class="nextinfo">
+        <p>上一篇：<a href="{% url 'user:info' art.id %}?page=-1&&num={{ index_num }}" {% if not art_pre %}style="display:none;"{% endif %}>{{ art_pre.title }}</a></p>
+        <p>下一篇：<a href="{% url 'user:info' art.id %}?page=1&&num={{ index_num }}" {% if not art_next %}style="display:none;"{% endif %}>{{ art_next.title }}</a></p>
+      </div>
+  </main>
+{% endblock %}
+

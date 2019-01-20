@@ -1,0 +1,25 @@
+{% extends 'user-base-main.html' %}
+{% block title %}
+首页
+{% endblock %}
+
+{% block content0 %}
+<div class="about_me">
+  <h2>关于我</h2>
+  <ul>
+    <i><img src="/static/images/test/64.jpg"></i>
+    <p><b>杨海</b>，一个90后草根男站长！15年入行。一直潜心研究web前端技术，一边工作一边积累经验，分享一些个人博客模板，以及SEO优化等心得。</p>
+  </ul>
+</div>
+{% endblock %}
+
+{% block content %}
+  <main class="r_box">
+    {% for art in arts %}
+    <li><i><a href="{% url 'user:info' art.id %}"><img src="/media/{{ art.image }}"></a></i>
+      <h3><a href="{% url 'user:info' art.id %}">{{ art.title }}</a></h3>
+      <p>{{ art.contents | safe }}</p>
+    </li>
+    {% endfor %}
+  </main>
+{% endblock %}
